@@ -1,2 +1,3 @@
-# simple_template_golang_gin
-Simple Template server with Golang, Gin, and PostgreSQL
+# simple_template-restfulAPI_golang_gin
+
+Simple Template server restful API with Golang, Gin, and PostgreSQL
