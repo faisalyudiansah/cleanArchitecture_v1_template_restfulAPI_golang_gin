@@ -27,6 +27,8 @@ func ErrorHandler(c *gin.Context) {
 			apperrors.ErrUnauthorization:    http.StatusUnauthorized,
 			apperrors.ErrUrlNotFound:        http.StatusNotFound,
 			apperrors.ErrRequestBodyInvalid: http.StatusBadRequest,
+			apperrors.ErrLimitError:         http.StatusBadRequest,
+			apperrors.ErrTimeoutError:       http.StatusBadRequest,
 		}
 		if statusCode, exists := errorMappings[c.Errors[0].Err]; exists {
 			helpers.PrintError(c, statusCode, c.Errors[0].Err.Error())
