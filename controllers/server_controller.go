@@ -1,27 +1,29 @@
 package controllers
 
 import (
+	"server/helpers/ginutils"
 	"server/services"
 
 	"github.com/gin-gonic/gin"
 )
 
-type ServerController struct {
-	ServerService services.ServerServiceInterface
+type ExampleController struct {
+	ExampleService services.ExampleServiceInterface
 }
 
-func NewServerController(
-	ServerService services.ServerServiceInterface,
-) *ServerController {
-	return &ServerController{
-		ServerService: ServerService,
+func NewExampleController(
+	ExampleService services.ExampleServiceInterface,
+) *ExampleController {
+	return &ExampleController{
+		ExampleService: ExampleService,
 	}
 }
 
-func (sc *ServerController) Get(ctx *gin.Context) {
-	err := sc.ServerService.GetService(ctx)
+func (sc *ExampleController) Get(ctx *gin.Context) {
+	err := sc.ExampleService.GetService(ctx)
 	if err != nil {
 		ctx.Error(err)
 		return
 	}
+	ginutils.ResponseOKPlain(ctx)
 }

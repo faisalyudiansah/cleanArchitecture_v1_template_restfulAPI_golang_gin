@@ -1,11 +1,10 @@
 package main
 
 import (
-	"server/databases"
 	"server/servers"
 )
 
 func main() {
-	databases.Seed()
+	// databases.Seed()
 	servers.RunServer()
 }

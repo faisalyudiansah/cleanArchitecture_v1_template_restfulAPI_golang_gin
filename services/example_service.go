@@ -5,23 +5,23 @@ import (
 	"server/repositories"
 )
 
-type ServerServiceInterface interface {
+type ExampleServiceInterface interface {
 	GetService(ctx context.Context) error
 }
 
-type ServerServiceImplementation struct {
+type ExampleServiceImplementation struct {
 	TransactorRepository repositories.TransactorRepositoryInterface
 }
 
-func NewServerServiceImplementation(
+func NewExampleServiceImplementation(
 	TransactorRepository repositories.TransactorRepositoryInterface,
-) *ServerServiceImplementation {
-	return &ServerServiceImplementation{
+) *ExampleServiceImplementation {
+	return &ExampleServiceImplementation{
 		TransactorRepository: TransactorRepository,
 	}
 }
 
-func (ir *ServerServiceImplementation) GetService(ctx context.Context) error {
+func (ir *ExampleServiceImplementation) GetService(ctx context.Context) error {
 	err := ir.TransactorRepository.Atomic(ctx, func(cForTx context.Context) error {
 		return nil
 	})

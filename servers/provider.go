@@ -19,15 +19,15 @@ var (
 
 var (
 	TransactorRepository *repositories.TransactorRepositoryImplementation
-	ServerRepository     *repositories.ServerRepositoryImplementation
+	ExampleRepository    *repositories.ExampleRepositoryImplementation
 )
 
 var (
-	ServerService *services.ServerServiceImplementation
+	ExampleService *services.ExampleServiceImplementation
 )
 
 var (
-	ServerController *controllers.ServerController
+	ExampleController *controllers.ExampleController
 )
 
 func SetupController(router *gin.Engine, db *sql.DB) {
@@ -39,12 +39,12 @@ func SetupController(router *gin.Engine, db *sql.DB) {
 	GetParam = helpers.NewGetParams()
 	TransactorRepository = repositories.NewTransactorRepositoryImplementation(db)
 
-	SetupServerController(db)
-	SetupYourRoute(router, ServerController)
+	SetupExampleController(db)
+	SetupYourRoute(router, ExampleController)
 }
 
-func SetupServerController(db *sql.DB) {
-	ServerRepository = repositories.NewServerRepositoryImplementation(db)
-	ServerService = services.NewServerServiceImplementation(TransactorRepository)
-	ServerController = controllers.NewServerController(ServerService)
+func SetupExampleController(db *sql.DB) {
+	ExampleRepository = repositories.NewExampleRepositoryImplementation(db)
+	ExampleService = services.NewExampleServiceImplementation(TransactorRepository)
+	ExampleController = controllers.NewExampleController(ExampleService)
 }
