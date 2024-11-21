@@ -1,7 +1,7 @@
 package servers
 
 import (
-	"server/helpers/validationutils"
+	validationutils "server/helpers/validation_utils"
 
 	"github.com/gin-gonic/gin/binding"
 	"github.com/go-playground/validator/v10"
